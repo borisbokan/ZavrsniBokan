@@ -25,6 +25,9 @@
         //podesavanja aktivnost
         <activity android:name=".Activitys.SettingsActivity" android:parentActivityName=".Activitys.MainActivityActivity"/>
 
+        //podesavanja aktivnost
+        <activity android:name=".Activitys.DodavanjeIspravka" android:parentActivityName=".Activitys.MainActivityActivity"/>
+
 
 
     </application>

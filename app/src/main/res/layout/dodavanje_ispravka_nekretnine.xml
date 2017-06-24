@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:padding="7dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etxtNaziv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Naziv?"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etxtOpis_unoisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Opis?"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etxtAdresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Adresa?"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etxtBrojTel_unoisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="broj telefona"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/etxtKvadratura_unoisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Kvadrata?"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/etxtBrojSoba_unoisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Broj soba?"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/etxtCena_unoisp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Cena?"
+                android:inputType="numberDecimal" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnOdustajem_unoisp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Odustajem" />
+
+            <Button
+                android:id="@+id/btnSnimi_unoisp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Snimi" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -1,5 +1,6 @@
 package borcha.com.nekretnine.Activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,6 +32,10 @@ public class MainActivityActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
+                Intent inDodajNekretninu=new Intent(getBaseContext(),DodavanjeIspravka.class);
+                inDodajNekretninu.putExtra("tip_ope",DodavanjeIspravka.TIP_OPERACIJE);
+
+                startActivity(inDodajNekretninu);
 
 
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
