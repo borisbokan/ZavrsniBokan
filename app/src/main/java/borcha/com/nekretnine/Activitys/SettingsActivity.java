@@ -17,7 +17,7 @@ public class SettingsActivity extends PreferenceActivity {
 
     private SharedPreferences podesavnja;
     private boolean toastPoruka;
-    private boolean notifikacionaPoruka;
+    private boolean snackPoruka;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,8 @@ public class SettingsActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.podesavanja);
 
         podesavnja=getPreferences(MODE_PRIVATE);
-        toastPoruka=podesavnja.getBoolean("sw_notifikacija_ukljucena",true);
-        notifikacionaPoruka=podesavnja.getBoolean("chb_toast_ukljucen",true); 
+        toastPoruka=podesavnja.getBoolean("chb_toast_ukljucen",true);
+        snackPoruka=podesavnja.getBoolean("snackbar_ukljucen",true);
 
         ListPreference lista=(ListPreference)findPreference("listaTema");
         lista.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -50,7 +50,7 @@ public class SettingsActivity extends PreferenceActivity {
     }
     public boolean jelNotifikacionaPorukaUkljucena() {
 
-        return notifikacionaPoruka;
+        return snackPoruka;
     }
 
     public void setToastPoruka(boolean ukljuceno) {

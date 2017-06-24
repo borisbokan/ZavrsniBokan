@@ -56,10 +56,7 @@ public class DetaljiActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected( MenuItem item) {
         int id = item.getItemId();
 
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_svenekretnine) {
+        if (id == R.id.nav_svenekretnine) {
             Toast.makeText(this,"Klik sve nekretnine",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this,"Klik sve nekretnine",Toast.LENGTH_SHORT).show();
