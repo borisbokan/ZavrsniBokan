@@ -5,7 +5,7 @@
         <item
             android:id="@+id/nav_svenekretnine"
             android:icon="@mipmap/ic_home"
-            android:title="Import" />
+            android:title="@string/sve_nekretnine" />
 
 
         <item

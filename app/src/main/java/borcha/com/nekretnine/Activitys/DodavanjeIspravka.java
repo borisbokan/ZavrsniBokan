@@ -40,7 +40,7 @@ public class DodavanjeIspravka extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.dodavanje_ispravka_nekretnine);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         idNekretnine=getIntent().getIntExtra("id_nek",0);
         tipOepracije=getIntent().getIntExtra("id_ope",0);

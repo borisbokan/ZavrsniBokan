@@ -28,15 +28,6 @@ public class SettingsActivity extends PreferenceActivity {
         toastPoruka=podesavnja.getBoolean("chb_toast_ukljucen",true);
         snackPoruka=podesavnja.getBoolean("snackbar_ukljucen",true);
 
-        ListPreference lista=(ListPreference)findPreference("listaTema");
-        lista.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                int vred=Integer.valueOf(preference.getSharedPreferences().getString("listaTema","0"));
-                setujTemuIzSettings(vred);
-                return false;
-            }
-        });
 
     }
 

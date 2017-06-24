@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SablonProject1</string>
+    <string name="app_name">Nekretnine</string>
     <string name="action_settings">Settings</string>
     <string name="action_oaplikaciji">O aplikaciji</string>
     <string name="osvezi">Osvezi</string>
@@ -14,5 +14,6 @@
     <string name="snackbar_poruke_ukljucene">Snack bar poruke ukljucene</string>
     <string name="navigation_drawer_open">Otvori</string>
     <string name="navigation_drawer_close">Zatvori</string>
+    <string name="sve_nekretnine">Sve nekretnine</string>
 
 </resources>

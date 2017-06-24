@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +117,14 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_svenekretnine) {
+
+
+
             Toast.makeText(this,"Klik sve nekretnine",Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
+            Intent settings=new Intent(this,SettingsActivity.class);
+            startActivity(settings);
+
             Toast.makeText(this,"Klik sve nekretnine",Toast.LENGTH_SHORT).show();
         }
 
