@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -22,7 +23,8 @@ public class AdapterNekretnina extends ArrayAdapter<Nekretnina> {
 
     LayoutInflater lyInflater;
     Context cont;
-    TextView txvNaziv,txvGodinaRodjenja;
+    TextView txvNaziv,txvOpis;
+    ImageView imgSlika;
 
     public AdapterNekretnina(Context context, List<Nekretnina> _listaNekretnina){
         super(context, R.layout.lista_stavka_nekretnina,_listaNekretnina);
@@ -39,11 +41,12 @@ public class AdapterNekretnina extends ArrayAdapter<Nekretnina> {
 
 
         txvNaziv=(TextView)vi.findViewById(R.id.txvNazivStavkka_lista);
-        txvGodinaRodjenja=(TextView)vi.findViewById(R.id.txtOpisStavkka_lista);
+        txvOpis=(TextView)vi.findViewById(R.id.txtOpisStavkka_lista);
+        imgSlika=(ImageView)vi.findViewById(R.id.imgSlika_gvstavka);
 
         txvNaziv.setText(nekretnina.getNaziv());
-        txvGodinaRodjenja.setText(nekretnina.getOpis().toString());
-
+        txvOpis.setText(nekretnina.getOpis().toString());
+        imgSlika.setImageResource(R.mipmap.ic_home);
 
         return vi;
     }
