@@ -24,7 +24,7 @@ import borcha.com.nekretnine.pomocne.myNotification;
 public class MySqlNekretnine extends MyDbHelp {
 
     private boolean toasUklj;
-    private boolean notifUkl;
+    private boolean snackBar;
     private Context cont;
     private Nekretnina nekretnina;
     private int id=0;
@@ -39,7 +39,7 @@ public class MySqlNekretnine extends MyDbHelp {
         this.cont=_cont;
 
         SettingsActivity podesavanja=new SettingsActivity();
-        notifUkl= podesavanja.jelNotifikacionaPorukaUkljucena();
+        snackBar= podesavanja.jelNotifikacionaPorukaUkljucena();
         toasUklj=podesavanja.jelToastPorukaUkljucena();
 
          mNotificationManager = (NotificationManager)cont.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -56,7 +56,7 @@ public class MySqlNekretnine extends MyDbHelp {
         this.id=_id;
 
         SettingsActivity podesavanja=new SettingsActivity();
-        notifUkl= podesavanja.jelNotifikacionaPorukaUkljucena();
+        snackBar= podesavanja.jelNotifikacionaPorukaUkljucena();
         toasUklj=podesavanja.jelToastPorukaUkljucena();
 
         mNotificationManager = (NotificationManager)cont.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -68,7 +68,7 @@ public class MySqlNekretnine extends MyDbHelp {
         this.nekretnina=_nekretnina;
 
         SettingsActivity podesavanja=new SettingsActivity();
-        notifUkl= podesavanja.jelNotifikacionaPorukaUkljucena();
+        snackBar= podesavanja.jelNotifikacionaPorukaUkljucena();
         toasUklj=podesavanja.jelToastPorukaUkljucena();
 
         mNotificationManager = (NotificationManager)cont.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -87,14 +87,6 @@ public class MySqlNekretnine extends MyDbHelp {
 
             try {
                 rez=getDaoNekretnina().updateId(nekretnina,getId());
-
-                if(rez==1){
-                   uslovnaNotifikacija("Ispravka Nekretnina","Ispravka Nekretnina " + Nekretnina.getNaziv() + " uspesna");
-                    uslovnaToastPoruka("Ispravka Nekretnina","Ispravka Nekretnina" + Nekretnina.getNaziv().toString()  + " uspesna");
-                }else{
-                    uslovnaNotifikacija("Ispravka Nekretnina","Ispravka Nekretnina " + Nekretnina.getNaziv()  + " neuspesna. Greska!");
-                    uslovnaToastPoruka("Ispravka Nekretnina","Ispravka Nekretnina " + Nekretnina.getNaziv()  + " neuspesna. Greska!");
-                }
 
 
             } catch (SQLException e) {
@@ -115,9 +107,9 @@ public class MySqlNekretnine extends MyDbHelp {
         }
     }
 
-    private void uslovnaNotifikacija(String naslov, String poruka) {
+    private void uslovnaSnackbar(String naslov, String poruka) {
 
-        if(notifUkl){
+        if(snackBar){
 
             myNotification notifikacija=new myNotification(cont,naslov,poruka);
             mNotificationManager.notify(13,notifikacija.build());
@@ -132,16 +124,7 @@ public class MySqlNekretnine extends MyDbHelp {
 
         try {
                 rez = getDaoNekretnina().delete(this.nekretnina);
-            if(rez==1){
-                uslovnaNotifikacija("Brisanje glumca","Brisanje glumca " +  this.nekretnina.getNaziv() + " uspesna");
-                uslovnaToastPoruka("Brisanje glumca","Brisanje glumca " + this.nekretnina.getNaziv()  + " uspesna");
-            }else{
-                uslovnaNotifikacija("Brisanje glumca","Brisanje glumca " + this.nekretnina.getNaziv()  + " neuspesna. Greska!");
-                uslovnaToastPoruka("Brisanje glumca","Brisanje glumca " + this.nekretnina.getNaziv()  + " neuspesna. Greska!");
-            }
-
-
-                //ObrisiNekretnina.OnObrisiNekretnina(rez);
+                         //ObrisiNekretnina.OnObrisiNekretnina(rez);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -159,13 +142,6 @@ public class MySqlNekretnine extends MyDbHelp {
             try {
                 rez = getDaoNekretnina().create(_nekretnina);
 
-                if(rez==1){
-                    uslovnaNotifikacija("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv()  + " uspesna");
-                    uslovnaToastPoruka("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv()  + " uspesna");
-                }else{
-                    uslovnaNotifikacija("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv()  + " neuspesna. Greska!");
-                    uslovnaToastPoruka("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv() + " neuspesna. Greska!");
-                }
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -208,11 +184,11 @@ public class MySqlNekretnine extends MyDbHelp {
      *  Vraca listu jela po kategoriji
      */
 
-    public List<Nekretnina> getNekretninaiPioStavkka(Stavkka _stavkka)  {
+    public List<Nekretnina> getNekretninaiPioStavkka(Nekretnina _stavkka)  {
         List<Nekretnina> glumci=null;
         try {
             QueryBuilder upit = getDaoNekretnina().queryBuilder();
-            Where<Nekretnina,Integer> where=upit.where().idEq(getDaoStavkka(),_stavkka);
+            Where<Nekretnina,Integer> where=upit.where().idEq(getDaoNekretnina(),_stavkka);
             glumci=where.query();
 
         } catch (SQLException e) {
