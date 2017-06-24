@@ -103,7 +103,7 @@ public class MySqlKateggorija extends MyDbHelp {
 
 
         }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Kateggorija");
+            infoPoruka.newInstance(cont,"Poruka o gresci","Ne postoji ID zapisa!. Ne mozete prepraviti podatak za Slika");
 
         }
 
@@ -173,7 +173,7 @@ public class MySqlKateggorija extends MyDbHelp {
 
 
         }else{
-            infoPoruka.newInstance(cont,"Poruka o gresci","Objekat Kateggorija ima  null vrednsot");
+            infoPoruka.newInstance(cont,"Poruka o gresci","Objekat Slika ima  null vrednsot");
         }
 
 
@@ -181,7 +181,7 @@ public class MySqlKateggorija extends MyDbHelp {
     }
 
 
-    //Vraca listu svih objekata Kateggorija
+    //Vraca listu svih objekata Slika
     public List<Kateggorija> getSviGlumci()  {
         List<Kateggorija> glumci=null;
         try {
