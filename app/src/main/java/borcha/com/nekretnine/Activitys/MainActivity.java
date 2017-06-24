@@ -62,6 +62,23 @@ public class MainActivity extends AppCompatActivity
 
 
         //***********************************
+
+
+        MySqlNekretnine dbnekr=new MySqlNekretnine(this);
+
+        if(dbnekr.getBrojNekretninaa()<1){
+            Nekretnina nekretn=new Nekretnina();
+            nekretn.setNaziv("Stan 1");
+            nekretn.setOpis("Opis stana 1");
+            nekretn.setAdresa("Adresa stana 1");
+            nekretn.setBrojSoba(2);
+            nekretn.setBrojTelefona("0218434989");
+
+            dbnekr.snimiNovoNekretnina(nekretn);
+        }
+
+
+
         lsLista=(ListView)findViewById(R.id.lsLista);
 
         puniInicijalnePodatek();
