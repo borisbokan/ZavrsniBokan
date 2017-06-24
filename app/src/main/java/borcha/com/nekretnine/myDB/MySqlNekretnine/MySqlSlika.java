@@ -17,7 +17,7 @@ import java.util.List;
  * Created by borcha on 02.06.17..
  */
 
-public class MySqlStavkka extends MyDbHelp {
+public class MySqlSlika extends MyDbHelp {
 
 
     private Context cont;
@@ -41,7 +41,7 @@ public class MySqlStavkka extends MyDbHelp {
      * @param _cont
 
      */
-    public MySqlStavkka(Context _cont){
+    public MySqlSlika(Context _cont){
         super(_cont);
         this.cont=_cont;
 
@@ -52,7 +52,7 @@ public class MySqlStavkka extends MyDbHelp {
      * @param _cont
      * @param _Stavkka
      */
-    public MySqlStavkka(Context _cont, Stavkka _Stavkka) {
+    public MySqlSlika(Context _cont, Stavkka _Stavkka) {
         super(_cont);
         this.cont = _cont;
         this.stavkka=_Stavkka;

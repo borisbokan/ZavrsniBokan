@@ -4,29 +4,29 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.borcha.sablonproject1.myActivitys.SettingsActivity;
-import com.borcha.sablonproject1.myDB.MyDbHelp;
-import com.borcha.sablonproject1.myDB.dbmodel.Kateggorija;
-import com.borcha.sablonproject1.myDB.dbmodel.Stavkka;
-import com.borcha.sablonproject1.pomocne.infoPoruka;
-import com.borcha.sablonproject1.pomocne.myNotification;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 
 import java.sql.SQLException;
 import java.util.List;
 
+import borcha.com.nekretnine.Activitys.SettingsActivity;
+import borcha.com.nekretnine.myDB.MyDbHelp;
+import borcha.com.nekretnine.myDB.dbmodel.Nekretnina;
+import borcha.com.nekretnine.pomocne.infoPoruka;
+import borcha.com.nekretnine.pomocne.myNotification;
+
 
 /**
  * Created by borcha on 02.06.17..
  */
 
-public class MySqlKateggorija extends MyDbHelp {
+public class MySqlNekretnine extends MyDbHelp {
 
     private boolean toasUklj;
     private boolean notifUkl;
     private Context cont;
-    private Kateggorija kateggorija;
+    private Nekretnina nekretnina;
     private int id=0;
     NotificationManager mNotificationManager;
 
@@ -34,7 +34,7 @@ public class MySqlKateggorija extends MyDbHelp {
      * Konstruktor za unos. Nap. Ukoliko je sa Id-om ima moguce dodatne operacije kao sto su: <br> Update ili Delete.
      * @param _cont
      */
-    public MySqlKateggorija(Context _cont) {
+    public MySqlNekretnine(Context _cont) {
         super(_cont);
         this.cont=_cont;
 
@@ -50,7 +50,7 @@ public class MySqlKateggorija extends MyDbHelp {
      * @param _cont
      * @param _id
      */
-    public MySqlKateggorija(Context _cont, int _id) {
+    public MySqlNekretnine(Context _cont, int _id) {
         super(_cont);
         this.cont=_cont;
         this.id=_id;
@@ -62,10 +62,10 @@ public class MySqlKateggorija extends MyDbHelp {
         mNotificationManager = (NotificationManager)cont.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
-    public MySqlKateggorija(Context _cont, Kateggorija _kateggorija) {
+    public MySqlNekretnine(Context _cont, borcha.com.nekretnine.myDB.dbmodel.Nekretnina _nekretnina) {
         super(_cont);
         this.cont=_cont;
-        this.kateggorija=_kateggorija;
+        this.nekretnina=_nekretnina;
 
         SettingsActivity podesavanja=new SettingsActivity();
         notifUkl= podesavanja.jelNotifikacionaPorukaUkljucena();
@@ -79,21 +79,21 @@ public class MySqlKateggorija extends MyDbHelp {
     //*************************operaciej nad bazom *****************************************************
 
 
-    public void updateKateggorija() {
+    public void updateNekretnina() {
 
         int rez=0;
 
         if(getId()!=0){
 
             try {
-                rez=getDaoKateggorija().updateId(kateggorija,getId());
+                rez=getDaoNekretnina().updateId(nekretnina,getId());
 
                 if(rez==1){
-                   uslovnaNotifikacija("Ispravka kateggorija","Ispravka kateggorija " + kateggorija.getNaziv() + " uspesna");
-                    uslovnaToastPoruka("Ispravka kateggorija","Ispravka kateggorija" + kateggorija.getNaziv().toString()  + " uspesna");
+                   uslovnaNotifikacija("Ispravka Nekretnina","Ispravka Nekretnina " + Nekretnina.getNaziv() + " uspesna");
+                    uslovnaToastPoruka("Ispravka Nekretnina","Ispravka Nekretnina" + Nekretnina.getNaziv().toString()  + " uspesna");
                 }else{
-                    uslovnaNotifikacija("Ispravka kateggorija","Ispravka kateggorija " + kateggorija.getNaziv()  + " neuspesna. Greska!");
-                    uslovnaToastPoruka("Ispravka kateggorija","Ispravka kateggorija " + kateggorija.getNaziv()  + " neuspesna. Greska!");
+                    uslovnaNotifikacija("Ispravka Nekretnina","Ispravka Nekretnina " + Nekretnina.getNaziv()  + " neuspesna. Greska!");
+                    uslovnaToastPoruka("Ispravka Nekretnina","Ispravka Nekretnina " + Nekretnina.getNaziv()  + " neuspesna. Greska!");
                 }
 
 
@@ -127,21 +127,21 @@ public class MySqlKateggorija extends MyDbHelp {
     /**
      * Brisanje jela
      */
-    public void obrisiKateggorija() {
+    public void obrisiNekretnina() {
         int rez= 0;
 
         try {
-                rez = getDaoKateggorija().delete(this.kateggorija);
+                rez = getDaoNekretnina().delete(this.nekretnina);
             if(rez==1){
-                uslovnaNotifikacija("Brisanje glumca","Brisanje glumca " +  this.kateggorija.getNaziv() + " uspesna");
-                uslovnaToastPoruka("Brisanje glumca","Brisanje glumca " + this.kateggorija.getNaziv()  + " uspesna");
+                uslovnaNotifikacija("Brisanje glumca","Brisanje glumca " +  this.nekretnina.getNaziv() + " uspesna");
+                uslovnaToastPoruka("Brisanje glumca","Brisanje glumca " + this.nekretnina.getNaziv()  + " uspesna");
             }else{
-                uslovnaNotifikacija("Brisanje glumca","Brisanje glumca " + this.kateggorija.getNaziv()  + " neuspesna. Greska!");
-                uslovnaToastPoruka("Brisanje glumca","Brisanje glumca " + this.kateggorija.getNaziv()  + " neuspesna. Greska!");
+                uslovnaNotifikacija("Brisanje glumca","Brisanje glumca " + this.nekretnina.getNaziv()  + " neuspesna. Greska!");
+                uslovnaToastPoruka("Brisanje glumca","Brisanje glumca " + this.nekretnina.getNaziv()  + " neuspesna. Greska!");
             }
 
 
-                //ObrisiKateggorija.OnObrisiKateggorija(rez);
+                //ObrisiNekretnina.OnObrisiNekretnina(rez);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -149,22 +149,22 @@ public class MySqlKateggorija extends MyDbHelp {
 
     /**
      * Unos novog jela
-     * @param _kateggorija
+     * @param _nekretnina
      */
-    public void snimiNovoKateggorija(Kateggorija _kateggorija) {
+    public void snimiNovoNekretnina(Nekretnina _nekretnina) {
 
-        if(!_kateggorija.equals(null)){
+        if(!_nekretnina.equals(null)){
             //TODO. Uraditi Sql upit za delete
             int rez= 0;
             try {
-                rez = getDaoKateggorija().create(_kateggorija);
+                rez = getDaoNekretnina().create(_nekretnina);
 
                 if(rez==1){
-                    uslovnaNotifikacija("Unos kateggorija","Unos kateggorija " + kateggorija.getNaziv()  + " uspesna");
-                    uslovnaToastPoruka("Unos kateggorija","Unos kateggorija " + kateggorija.getNaziv()  + " uspesna");
+                    uslovnaNotifikacija("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv()  + " uspesna");
+                    uslovnaToastPoruka("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv()  + " uspesna");
                 }else{
-                    uslovnaNotifikacija("Unos kateggorija","Unos kateggorija " + kateggorija.getNaziv()  + " neuspesna. Greska!");
-                    uslovnaToastPoruka("Unos kateggorija","Unos kateggorija " + kateggorija.getNaziv() + " neuspesna. Greska!");
+                    uslovnaNotifikacija("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv()  + " neuspesna. Greska!");
+                    uslovnaToastPoruka("Unos Nekretnina","Unos Nekretnina " + Nekretnina.getNaziv() + " neuspesna. Greska!");
                 }
 
             } catch (SQLException e) {
@@ -182,10 +182,10 @@ public class MySqlKateggorija extends MyDbHelp {
 
 
     //Vraca listu svih objekata Slika
-    public List<Kateggorija> getSviGlumci()  {
-        List<Kateggorija> glumci=null;
+    public List<Nekretnina> getSviGlumci()  {
+        List<Nekretnina> glumci=null;
         try {
-            glumci= getDaoKateggorija().queryForAll();
+            glumci= getDaoNekretnina().queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -194,10 +194,10 @@ public class MySqlKateggorija extends MyDbHelp {
     }
 
     //Trazi vrednost jela po ID zapisu
-    public Kateggorija getKateggorijaPoId(int _id)  {
+    public Nekretnina getNekretninaPoId(int _id)  {
 
         try {
-            return getDaoKateggorija().queryForId(_id);
+            return getDaoNekretnina().queryForId(_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -208,11 +208,11 @@ public class MySqlKateggorija extends MyDbHelp {
      *  Vraca listu jela po kategoriji
      */
 
-    public List<Kateggorija> getKateggorijaiPioStavkka(Stavkka _stavkka)  {
-        List<Kateggorija> glumci=null;
+    public List<Nekretnina> getNekretninaiPioStavkka(Stavkka _stavkka)  {
+        List<Nekretnina> glumci=null;
         try {
-            QueryBuilder upit = getDaoKateggorija().queryBuilder();
-            Where<Kateggorija,Integer> where=upit.where().idEq(getDaoStavkka(),_stavkka);
+            QueryBuilder upit = getDaoNekretnina().queryBuilder();
+            Where<Nekretnina,Integer> where=upit.where().idEq(getDaoStavkka(),_stavkka);
             glumci=where.query();
 
         } catch (SQLException e) {
@@ -222,8 +222,8 @@ public class MySqlKateggorija extends MyDbHelp {
         return glumci;
     }
 
-    public void setKateggorija(Kateggorija Kateggorija) {
-        this.kateggorija = Kateggorija;
+    public void setNekretnina(Nekretnina Nekretnina) {
+        this.nekretnina = Nekretnina;
     }
 
     public int getId() {
@@ -234,10 +234,10 @@ public class MySqlKateggorija extends MyDbHelp {
         this.id = id;
     }
 
-    public int getBrojKateggorijaa() {
+    public int getBrojNekretninaa() {
         int br = 0;
         try {
-            br = getDaoKateggorija().queryForAll().size();
+            br = getDaoNekretnina().queryForAll().size();
         } catch (SQLException e) {
             e.printStackTrace();
         }
