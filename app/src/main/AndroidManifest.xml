@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/MojaTemaCrvena">
         <activity
-            android:name=".Activitys.MainActivityActivity"
+            android:name=".Activitys.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/MojaTemaCrvena">
             <intent-filter>
@@ -21,12 +21,12 @@
         </activity>
         
         //Detalji aktivnost
-        <activity android:name=".Activitys.DetaljiActivity" android:parentActivityName=".Activitys.MainActivityActivity"/>
+        <activity android:name=".Activitys.DetaljiActivity" android:parentActivityName=".Activitys.MainActivity"/>
         //podesavanja aktivnost
-        <activity android:name=".Activitys.SettingsActivity" android:parentActivityName=".Activitys.MainActivityActivity"/>
+        <activity android:name=".Activitys.SettingsActivity" android:parentActivityName=".Activitys.MainActivity"/>
 
         //podesavanja aktivnost
-        <activity android:name=".Activitys.DodavanjeIspravka" android:parentActivityName=".Activitys.MainActivityActivity"/>
+        <activity android:name=".Activitys.DodavanjeIspravka" android:parentActivityName=".Activitys.MainActivity"/>
 
 
 

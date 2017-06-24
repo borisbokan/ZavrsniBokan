@@ -18,6 +18,7 @@ public class Nekretnina {
     public static final String tNekretnina_adresa="adresa";
     public static final String tNekretnina_brojTelefona="broj_tel";
     public static final String tNekretnina_brojSoba="broj_soba";
+    public static final String tNekretnina_kvadratura="kvadratura";
     public static final String tNekretnina_cena="cena";
 
 
@@ -36,6 +37,11 @@ public class Nekretnina {
     private String brojTelefona;
     @DatabaseField(columnName = tNekretnina_brojSoba)
     private int brojSoba;
+
+
+
+    @DatabaseField(columnName = tNekretnina_kvadratura)
+    private float kvadrata;
     @DatabaseField(columnName = tNekretnina_cena)
     private float cena;
 
@@ -44,10 +50,14 @@ public class Nekretnina {
 
     public Nekretnina(){}
 
-    public Nekretnina(String _naziv, String _opis){
+    public Nekretnina(String _naziv, String _opis,String _adresa,String _brojTelefona,int _brojSoba,float _kvadrata,float _cena){
         this.naziv=_naziv;
         this.opis=_opis;
-
+        this.adresa=_adresa;
+        this.brojTelefona=_brojTelefona;
+        this.brojSoba=_brojSoba;
+        this.cena=_cena;
+        this.kvadrata=_kvadrata;
     }
 
     public int getId() {
@@ -109,7 +119,13 @@ public class Nekretnina {
     public ForeignCollection<Slika> getSlike() {
         return slike;
     }
+    public float getKvadrata() {
+        return kvadrata;
+    }
 
+    public void setKvadrata(float kvadrata) {
+        this.kvadrata = kvadrata;
+    }
     public void setSlike(ForeignCollection<Slika> slike) {
         this.slike = slike;
     }

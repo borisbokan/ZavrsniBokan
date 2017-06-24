@@ -4,18 +4,21 @@
 
     <item
         android:id="@+id/action_obrisi"
+        android:icon="@mipmap/ic_obrisi"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_prepravi"
+        android:icon="@mipmap/ic_ispravi"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_dodajsliku"
+        android:icon="@mipmap/ic_home"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />

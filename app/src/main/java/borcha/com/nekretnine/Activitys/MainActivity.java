@@ -13,12 +13,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import borcha.com.nekretnine.R;
+import java.util.List;
 
-public class MainActivityActivity extends AppCompatActivity
+import borcha.com.nekretnine.R;
+import borcha.com.nekretnine.myAdapters.AdapterNekretnina;
+import borcha.com.nekretnine.myDB.MySqlNekretnine.MySqlNekretnine;
+import borcha.com.nekretnine.myDB.dbmodel.Nekretnina;
+
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ListView lsLista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,7 @@ public class MainActivityActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 Intent inDodajNekretninu=new Intent(getBaseContext(),DodavanjeIspravka.class);
-                inDodajNekretninu.putExtra("tip_ope",DodavanjeIspravka.TIP_OPERACIJE);
+                inDodajNekretninu.putExtra("tip_ope",DodavanjeIspravka.TIP_OPERACIJE_NOVO);
 
                 startActivity(inDodajNekretninu);
 
@@ -51,6 +59,25 @@ public class MainActivityActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //***********************************
+        lsLista=(ListView)findViewById(R.id.lsLista);
+
+        puniInicijalnePodatek();
+
+
+
+    }
+
+    private void puniInicijalnePodatek() {
+
+        MySqlNekretnine dbNekretnine=new MySqlNekretnine(this);
+        List<Nekretnina> lista=dbNekretnine.getSveNekretnine();
+        AdapterNekretnina adNekretnine=new AdapterNekretnina(this,lista);
+        lsLista.setAdapter(adNekretnine);
+
+
     }
 
     @Override

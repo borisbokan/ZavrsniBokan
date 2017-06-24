@@ -30,6 +30,7 @@ public class MySqlNekretnine extends MyDbHelp {
     private int id=0;
     NotificationManager mNotificationManager;
 
+
     /**
      * Konstruktor za unos. Nap. Ukoliko je sa Id-om ima moguce dodatne operacije kao sto su: <br> Update ili Delete.
      * @param _cont
@@ -158,15 +159,15 @@ public class MySqlNekretnine extends MyDbHelp {
 
 
     //Vraca listu svih objekata Slika
-    public List<Nekretnina> getSviGlumci()  {
-        List<Nekretnina> glumci=null;
+    public List<Nekretnina> getSveNekretnine()  {
+        List<Nekretnina> nekretnine=null;
         try {
-            glumci= getDaoNekretnina().queryForAll();
+            nekretnine= getDaoNekretnina().queryForAll(); 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return glumci;
+        return nekretnine;
     }
 
     //Trazi vrednost jela po ID zapisu

@@ -23,6 +23,11 @@ public class Slika {
     @DatabaseField(columnName = "nekretnina",foreign = true,foreignAutoCreate = true,foreignAutoRefresh = true)
     private Nekretnina nekretnina;
 
+    public Slika() { }
+
+    public Slika(String _path){
+        this.path=_path;
+    }
 
     public String getPath() {
         return path;
@@ -40,7 +45,7 @@ public class Slika {
         this.nekretnina = nekretnina;
     }
 
-    public Slika() { }
+
 
     public static String gettSlika() {
         return tSlika;
