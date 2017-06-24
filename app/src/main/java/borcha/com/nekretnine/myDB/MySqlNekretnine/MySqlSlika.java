@@ -2,15 +2,18 @@ package borcha.com.nekretnine.myDB.MySqlNekretnine;
 
 import android.content.Context;
 
-import com.borcha.sablonproject1.myDB.MyDbHelp;
-import com.borcha.sablonproject1.myDB.dbmodel.Kateggorija;
-import com.borcha.sablonproject1.myDB.dbmodel.Stavkka;
+
+import com.j256.ormlite.stmt.PreparedUpdate;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import borcha.com.nekretnine.myDB.MyDbHelp;
+import borcha.com.nekretnine.myDB.dbmodel.Nekretnina;
+import borcha.com.nekretnine.myDB.dbmodel.Slika;
 
 
 /**
@@ -21,17 +24,10 @@ public class MySqlSlika extends MyDbHelp {
 
 
     private Context cont;
-    private Stavkka stavkka;
+    private Nekretnina nekretnina;
+    private Slika slika;
 
-    public Kateggorija getKateggorija() {
-        return kateggorija;
-    }
 
-    public void setKateggorija(Kateggorija kateggorija) {
-        this.kateggorija = kateggorija;
-    }
-
-    private Kateggorija kateggorija;
     private int id=0;
 
 
@@ -50,12 +46,12 @@ public class MySqlSlika extends MyDbHelp {
     /**
      * Konstruktor sa Id-om je ukoliko saljemo u cilju update ili brisanja podatka.
      * @param _cont
-     * @param _Stavkka
+     * @param _slika
      */
-    public MySqlSlika(Context _cont, Stavkka _Stavkka) {
+    public MySqlSlika(Context _cont, Slika _slika) {
         super(_cont);
         this.cont = _cont;
-        this.stavkka=_Stavkka;
+        this.slika=_slika;
 
     }
 
@@ -65,12 +61,12 @@ public class MySqlSlika extends MyDbHelp {
     /**
      * Update jela
      */
-    public void prepraviStavkka() {
+    public void prepravislika() {
 
        int rez= 0;
 
         try {
-            rez = getDaoStavkka().update(stavkka);
+            rez = getDaoSlika().update(this.slika);
             //PrepraviKategoriju.OnPrepraviKategoriju(rez);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,10 +80,10 @@ public class MySqlSlika extends MyDbHelp {
     /**
      * Brisanje jela
      */
-    public void obrisiStavkka()  {
+    public void obrisiSlika()  {
         int rez= 0;
             try{
-                rez=getDaoStavkka().delete(this.stavkka);
+                rez=getDaoSlika().delete(this.slika);
                 //ObrisiKategoriju.OnObrisiKategoriju(rez);
 
 
@@ -98,16 +94,16 @@ public class MySqlSlika extends MyDbHelp {
     }
 
     /**
-     * Unos novog Stavkkaa
-     * @param _Stavkka
+     * Unos novog Slikaa
+     * @param _Slika
      */
-    public void snimiNoviStavkka(Stavkka _Stavkka) {
+    public void snimiNoviSlika(Slika _Slika) {
 
-        if(!_Stavkka.equals(null)) {
+        if(!_Slika.equals(null)) {
             //TODO. Uraditi Sql upit za delete
             int rez = 0;
             try {
-                rez = getDaoStavkka().create(_Stavkka);
+                rez = getDaoSlika().create(_Slika);
 
 
             } catch (SQLException e) {
@@ -119,10 +115,10 @@ public class MySqlSlika extends MyDbHelp {
 
 
     //Vraca listu svih objekata Jelo
-    public List<Stavkka> getSviStavkkaovi() {
-        List<Stavkka> lista=new ArrayList<>();
+    public List<Slika> getSviSlika() {
+        List<Slika> lista=new ArrayList<>();
         try {
-            lista=getDaoStavkka().queryForAll();
+            lista=getDaoSlika().queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -130,32 +126,32 @@ public class MySqlSlika extends MyDbHelp {
     }
 
     //Trazi vrednost jela po ID zapisu
-    public Stavkka getStavkkaPoId(int _id) {
-        Stavkka Stavkka=null;
+    public Slika getSlikaPoId(int _id) {
+        Slika slika=null;
         try {
-            Stavkka= getDaoStavkka().queryForId(_id);
+            slika= getDaoSlika().queryForId(_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Stavkka;
+        return slika;
     }
 
 
 
     //Trazi vrednost jela po ID zapisu
-    public List<Stavkka> getStavkkaPoKateggorija(Kateggorija _kateggorija) {
-        List<Stavkka> Stavkkaovi=null;
+    public List<Slika> getSlikaPonekretnini(Nekretnina _nekretnina) {
+        List<Slika> Slikaovi=null;
         try {
 
-            QueryBuilder<Stavkka,Integer> query=getDaoStavkka().queryBuilder();
-            Where<Stavkka,Integer> where=query.where().eq(Stavkka.tStavkka_kateggorija,_kateggorija);
-            Stavkkaovi= where.query();
+            QueryBuilder<Slika,Integer> query=getDaoSlika().queryBuilder();
+            Where<Slika,Integer> where=query.where().eq(Slika.tSlika_nekretnina,_nekretnina);
+            Slikaovi= where.query();
 
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Stavkkaovi;
+        return Slikaovi;
     }
 
 
@@ -167,19 +163,19 @@ public class MySqlSlika extends MyDbHelp {
         this.id = id;
     }
 
-    public Stavkka getStavkka() {
-        return this.stavkka;
+    public Slika getSlika() {
+        return this.slika;
     }
 
-    public void setStavkka(Stavkka Stavkka) {
-        this.stavkka = Stavkka;
+    public void setSlika(Slika Slika) {
+        this.slika = Slika;
     }
 
 
-    public int getBrojStavkka(){
+    public int getBrojSlika(){
         int br=0;
         try {
-            br=getDaoStavkka().queryForAll().size();
+            br=getDaoSlika().queryForAll().size();
         } catch (SQLException e) {
             e.printStackTrace();
         }

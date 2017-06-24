@@ -11,5 +11,8 @@
     <string name="ispravi_glumca">Ispravi glumca</string>
     <string name="toast_poruka_ukljucena">Toast poruka ukljucena</string>
     <string name="podesavanja">Podesavanja</string>
+    <string name="snackbar_poruke_ukljucene">Snack bar poruke ukljucene</string>
+    <string name="navigation_drawer_open">Otvori</string>
+    <string name="navigation_drawer_close">Zatvori</string>
 
 </resources>

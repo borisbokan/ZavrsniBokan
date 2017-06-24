@@ -6,7 +6,7 @@
          android:title="@string/vidljivost_podataka" >
 
       <SwitchPreference android:key="snackbar_ukljucen"
-          android:title="@string/notifikacione_poruke_ukljucene"
+          android:title="@string/snackbar_poruke_ukljucene"
           android:summary="@string/opis_za_notifikaciju"
           android:defaultValue="true">
 
@@ -20,15 +20,5 @@
          </CheckBoxPreference>
 
     </PreferenceCategory>
-
-
-           <ListPreference
-
-            android:title="Odaberite temu"
-            android:key="listaTema"
-            android:defaultValue="0"
-            android:entries="@array/arlista_tema"
-            android:entryValues="@array/arlist_biranih_tema" />
-
 
 </PreferenceScreen>

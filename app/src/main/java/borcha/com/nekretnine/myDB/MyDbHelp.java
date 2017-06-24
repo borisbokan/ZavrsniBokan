@@ -77,13 +77,13 @@ public class MyDbHelp extends OrmLiteSqliteOpenHelper {
 
 
 
-    public Dao<Nekretnina,Integer> getDaoSlika() throws SQLException {
+    public Dao<Slika,Integer> getDaoSlika() throws SQLException {
 
         if(daoSlika==null){
             daoSlika=getDao(Slika.class);
         }
 
-        return daoNekretnina;
+        return daoSlika;
     }
 
     @Override
