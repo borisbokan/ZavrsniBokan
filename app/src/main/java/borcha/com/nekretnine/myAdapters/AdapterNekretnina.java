@@ -46,7 +46,7 @@ public class AdapterNekretnina extends ArrayAdapter<Nekretnina> {
 
         txvNaziv.setText(nekretnina.getNaziv());
         txvOpis.setText(nekretnina.getOpis().toString());
-        imgSlika.setImageResource(R.mipmap.ic_home);
+        //imgSlika.setImageResource(R.mipmap.ic_home);
 
         return vi;
     }
