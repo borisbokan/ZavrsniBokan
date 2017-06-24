@@ -3,6 +3,7 @@ package borcha.com.nekretnine.Activitys;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 
 import borcha.com.nekretnine.R;
 
@@ -18,6 +19,9 @@ public class DodavanjeIspravka extends AppCompatActivity {
 
     int tipOepracije=0;
     int idNekretnine=0;
+
+    EditText etxtnaziv,etxtOpis,etxtAdresa,etxtbrojtel,etxtKvadratura,etxtBrojSoba,etxtcena;
+
 
 
     @Override
